@@ -1,0 +1,17 @@
+{
+  "name": "websoket",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "prod": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "@line/bot-sdk": "^7.4.0",
+    "dotenv": "^10.0.0",
+    "express": "~4.16.1",
+    "http": "0.0.1-security",
+    "nodemon": "^2.0.15",
+    "socket.io": "^4.3.2"
+  }
+}

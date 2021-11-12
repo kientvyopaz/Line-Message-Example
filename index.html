@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Socket.IO chat</title>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io();
+            var replyToken = '';
+
+            function replyMessage () {
+                var input = document.getElementById("input");
+                if (input.value) {
+                    let message = input.value;
+                    socket.emit("replyMessage", { message, replyToken });
+                    appenMessage(message)
+                    input.value = "";
+                }
+            }
+
+            socket.on('getMessage', function(event) {
+                replyToken = event.replyToken;
+                appenMessage(event.message.text);
+            });
+
+            function appenMessage(text) {
+                var item = document.createElement('li');
+                item.textContent = text;
+                messages.appendChild(item);
+                window.scrollTo(0, document.body.scrollHeight);
+            }
+
+        </script>
+    </head>
+    <body>
+        <ul id="messages"></ul>
+        <input id="input" autocomplete="off" /><button onclick="replyMessage()">Send</button>
+    </body>
+</html>
