@@ -9,11 +9,11 @@
 
             function replyMessage () {
                 var input = document.getElementById("input");
-                if (input.value) {
+                if (input.value && replyToken) {
                     let message = input.value;
                     socket.emit("replyMessage", { message, replyToken });
                     appenMessage(message)
-                    input.value = "";
+                    input.value = replyToken = '';
                 }
             }
 

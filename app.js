@@ -4,8 +4,7 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
-const middleware = require('@line/bot-sdk').middleware
-const Client = require('@line/bot-sdk').Client;
+const { middleware, Client } = require('@line/bot-sdk');
 const io = new Server(server);
 
 const config = {
